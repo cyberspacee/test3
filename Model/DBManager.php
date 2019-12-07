@@ -101,3 +101,21 @@ function postOwnedBy($post_id, $user_id){
         echo $e->getMessage();
     }
 }
+
+function editPost(array $post){
+    try{
+        $pdo = getPDO();
+        $sql = "UPDATE posts SET text = ?, image_url = ?, price = ? WHERE owner_id = ? AND id = ?";
+        $params = [];
+        $params[] = $post["text"];
+        $params[] = $post["img_url"];
+        $params[] = $post["price"];
+        $params[] = $post["owner_id"];
+        $params[] = $post['id'];
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
+    }
+    catch (PDOException $e){
+        echo $e->getMessage();
+    }
+}

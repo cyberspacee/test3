@@ -1,11 +1,11 @@
 <?php
+session_start();
 if(!isset($_SESSION["logged_user_id"])){
     header("Location: login.php");
 }
 include_once "../Model/DBManager.php";
 $page = isset($_GET["page"]) ? $_GET["page"] : 1;
 $posts = getPosts($page);
-
 ?>
     <!doctype html>
     <html lang="en">
@@ -17,6 +17,9 @@ $posts = getPosts($page);
         <title>Document</title>
     </head>
     <body>
+    <form action="../Collector/backend.php" method="post">
+        <input type="submit" name="logout" value="Logout">
+    </form>
     <table>
         <tr>
             <th>ID</th>
@@ -31,7 +34,7 @@ $posts = getPosts($page);
             echo "<tr>";
             echo "<td>".$post["id"]."</td>";
             echo "<td>".$post["text"]."</td>";
-            echo "<td><img width='150px' src='".$post["image_url"]."' alt=''></td>";
+            echo "<td><img width='150px' src='../Collector/".$post["image_url"]."' alt=''></td>";
             echo "<td>".$post["price"]."</td>";
             if($owner_logged){
                 echo "<td><form action='../View/editPost.php' method='post'>

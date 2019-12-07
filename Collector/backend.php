@@ -66,14 +66,50 @@ if(isset($_POST["addPost"])){
             }
             else{
                 echo "file not moved '". $_FILES['file']['tmp_name'] . "'.";
-//                header("Location: addPost.php");
             }
         }
         else{
             echo "file not uploaded '". $_FILES['file']['tmp_name'] . "'.";
-//            header("Location: addPost.php");
         }
 
     }
 
+}
+if(isset($_POST['editPost'])){
+    if(!isset($_SESSION["logged_user_id"])){
+        header("Location: login.php");
+    }else {
+        $price = $_POST["price"];
+        $text = $_POST["text"];
+        $post_id = $_POST['id'];
+        if (is_uploaded_file($_FILES["file"]["tmp_name"])) {
+            $file_name_parts = explode(".", $_FILES["file"]["name"]);
+            $extension = $file_name_parts[count($file_name_parts) - 1];
+            $filename = $_SESSION["logged_user_id"] . "-" . time() . "." . $extension;
+            $img_url = "uploads" . DIRECTORY_SEPARATOR . $filename;
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $img_url)) {
+                $owner_id = $_SESSION["logged_user_id"];
+                $post = [];
+                $post['id'] = $post_id;
+                $post["text"] = $text;
+                $post["price"] = $price;
+                $post["img_url"] = $img_url;
+                $post["owner_id"] = $owner_id;
+                editPost($post);
+                header("Location: ../View/main.php");
+            }
+            else{
+                echo "file not moved '". $_FILES['file']['tmp_name'] . "'.";
+            }
+        }
+        else{
+            echo "file not uploaded '". $_FILES['file']['tmp_name'] . "'.";
+        }
+
+    }
+}
+if(isset($_POST['logout'])){
+    session_destroy();
+    header("Location:../View/login.php");
+    die();
 }
