@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5fdcfc52-5921-4c06-8608-84e4ae89791c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collector/backend.php" beforeDir="false" afterPath="$PROJECT_DIR$/Collector/backend.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DBManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/DBManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/main.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,6 +16,13 @@
       <executable />
     </execution>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -28,6 +33,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="D:/Games/$Ittalents - important stuff/Lesson29-2" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\test3demo\css" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -67,7 +78,7 @@
       <updated>1575636052472</updated>
       <workItem from="1575636054012" duration="2975000" />
       <workItem from="1575639072117" duration="2109000" />
-      <workItem from="1575719654721" duration="7960000" />
+      <workItem from="1575719654721" duration="8957000" />
     </task>
     <servers />
   </component>
