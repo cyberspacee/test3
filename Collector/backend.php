@@ -113,3 +113,14 @@ if(isset($_POST['logout'])){
     header("Location:../View/login.php");
     die();
 }
+if(isset($_POST['deletePost'])){
+    if(!isset($_SESSION["logged_user_id"])){
+        header("Location: login.php");
+    }else {
+        $post = [];
+        $post['id'] = $_POST['post_id'];
+        $post['owner_id'] = $_SESSION['logged_user_id'];
+        deletePost($post);
+        header("Location:../View/main.php");
+    }
+}

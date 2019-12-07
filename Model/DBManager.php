@@ -119,3 +119,13 @@ function editPost(array $post){
         echo $e->getMessage();
     }
 }
+
+function deletePost(array $post){
+    $pdo = getPDO();
+    $sql = "DELETE FROM posts WHERE owner_id = ? AND id = ?;";
+    $params = [];
+    $params[] = $post['owner_id'];
+    $params[] = $post['id'];
+    $statement = $pdo->prepare($sql);
+    $statement->execute($params);
+}

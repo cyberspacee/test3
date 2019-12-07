@@ -41,7 +41,10 @@ $posts = getPosts($page);
                             <input type='hidden' name='post_id' value='".$post["id"]."'>
                             <input type='submit' value='Edit' name='editPost'>
                           </form></td>";
-                echo "<td></td>";
+                echo "<td><form action='../Collector/backend.php' method='post'>
+                            <input type='hidden' name='post_id' value='".$post["id"]."'>
+                            <input type='submit' value='Delete' name='deletePost'>
+                          </form></td>";
             }
             else {
                 echo "<td></td>";
