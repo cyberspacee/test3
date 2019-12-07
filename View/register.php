@@ -16,6 +16,7 @@
     Password:  <input type="password" name="pass"><br>
     Email:     <input type="email" name="email"><br>
     <input type="submit" name="register" value="Register">
+    <a href="login.php">Login here</a>
 </form>
 </body>
 </html>

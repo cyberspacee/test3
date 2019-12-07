@@ -26,14 +26,26 @@ $posts = getPosts($page);
             <th>Edit</th>
             <th>Delete</th>
         </tr>
-<?php foreach ($posts as $post) {
-    $owner_logged = $post["owner_id"] == $_SESSION["logged_user_id"];
-    echo "<tr>";
-    echo "<td>" . $post["id"] . "</td>";
-    echo "<td>" . $post["text"] . "</td>";
-    echo "<td><img width='150px' src='" . $post["image_url"] . "' alt=''></td>";
-    echo "<td>" . $post["price"] . "</td>";
-}?>
+        <?php foreach ($posts as $post) {
+            $owner_logged = $post["owner_id"] == $_SESSION["logged_user_id"];
+            echo "<tr>";
+            echo "<td>".$post["id"]."</td>";
+            echo "<td>".$post["text"]."</td>";
+            echo "<td><img width='150px' src='".$post["image_url"]."' alt=''></td>";
+            echo "<td>".$post["price"]."</td>";
+            if($owner_logged){
+                echo "<td><form action='../View/editPost.php' method='post'>
+                            <input type='hidden' name='post_id' value='".$post["id"]."'>
+                            <input type='submit' value='Edit' name='editPost'>
+                          </form></td>";
+                echo "<td></td>";
+            }
+            else {
+                echo "<td></td>";
+                echo "<td></td>";
+            }
+            echo "</tr>";
+        } ?>
 </table>
     <a href="../Collector/backend.php?page=<?= $page-1 < 1 ? 1 : $page-1 ?>">Prev</a>
     <a href="../Collector/backend.php?page=<?= $page+1 ?>">Next</a>
