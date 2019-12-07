@@ -52,7 +52,7 @@ catch (PDOException $exception){
 function getPosts($page){
     try{
         $pdo = getPDO();
-        $sql = "SELECT id, text, image_url, price, owner_id FROM posts
+        $sql = "SELECT id, text, image_url, price, owner_id FROM posts ORDER BY price DESC 
                 LIMIT ".ROWS_PER_PAGE." 
                 OFFSET " . ($page-1)*ROWS_PER_PAGE;
         $stmt = $pdo->prepare($sql);
