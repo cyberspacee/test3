@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION["logged_user_id"])){
     header("Location: login.php");
 }
-include_once "dbManager.php";
+include_once "../Model/DBManager.php";
 $page = isset($_GET["page"]) ? $_GET["page"] : 1;
 $posts = getPosts($page);
 
