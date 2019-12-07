@@ -10,7 +10,6 @@
 <body>
 <h1>Add post</h1>
 <form action="../Collector/backend.php" method="post" enctype="multipart/form-data">
-
     Text<input type="text" name="text" required><br>
 Image<input type="file" name="file" required><br>
 Price<input type="number" name="price" required><br>

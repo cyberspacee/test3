@@ -1,5 +1,4 @@
 <?php
-session_start();
 if(!isset($_SESSION["logged_user_id"])){
     header("Location: login.php");
 }
@@ -38,7 +37,7 @@ $posts = getPosts($page);
 </table>
     <a href="../Collector/backend.php?page=<?= $page-1 < 1 ? 1 : $page-1 ?>">Prev</a>
     <a href="../Collector/backend.php?page=<?= $page+1 ?>">Next</a>
-    <a href="addPost.php"><button>Add post</button></a>
+    <a href="../View/addPost.php"><button>Add post</button></a>
 </body>
 </html>
 

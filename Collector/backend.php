@@ -62,7 +62,7 @@ if(isset($_POST["addPost"])){
                 $post["img_url"] = $img_url;
                 $post["owner_id"] = $owner_id;
                 addPost($post);
-                header("Location: main.php");
+                header("Location: ../View/main.php");
             }
             else{
                 echo "file not moved '". $_FILES['file']['tmp_name'] . "'.";
