@@ -1,4 +1,6 @@
 <?php
+define("ROWS_PER_PAGE", 5);
+
 function getPDO(){
     try{
         $dsn = 'mysql:host=localhost;dbname=test3';
@@ -57,6 +59,43 @@ function getPosts($page){
         $stmt->execute();
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $posts;
+    }
+    catch (PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function addPost(array &$post){
+    try{
+
+        $pdo = getPDO();
+        $sql = "INSERT INTO posts (text, image_url, price, owner_id) VALUES (?, ?, ?, ?);";
+        $params = [];
+        $params[] = $post["text"];
+        $params[] = $post["img_url"];
+        $params[] = $post["price"];
+        $params[] = $post["owner_id"];
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
+        $post_id = $pdo->lastInsertId();
+        $post["id"] = $post_id;
+    }
+    catch (PDOException $e){
+        echo $e->getMessage();
+    }
+}
+function postOwnedBy($post_id, $user_id){
+    try{
+        $pdo = getPDO();
+        $sql = "SELECT * FROM posts WHERE id = ? AND owner_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$post_id, $user_id]);
+        if($stmt->rowCount() == 0) {
+            return false;
+        }
+        else{
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
     }
     catch (PDOException $e){
         echo $e->getMessage();
