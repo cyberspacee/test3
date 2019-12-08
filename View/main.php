@@ -53,12 +53,10 @@ $posts = getPosts($page);
             echo "</tr>";
 
         } ?>
-        <tr>
-        <td colspan="2"><a href="../View/addPost.php"><button>Add post</button></a></td>
-        </tr>
 </table>
     <a href="../Collector/backend.php?page=<?= $page-1 < 1 ? 1 : $page-1 ?>">Prev</a>
     <a href="../Collector/backend.php?page=<?= $page+1 ?>">Next</a>
+    <a href="../View/addPost.php"><button>Add post</button></a>
 
 </body>
 </html>

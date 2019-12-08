@@ -66,23 +66,23 @@ function getPosts($page){
 }
 
 function addPost(array &$post){
-    try{
+//    try{
 
         $pdo = getPDO();
         $sql = "INSERT INTO posts (text, image_url, price, owner_id) VALUES (?, ?, ?, ?);";
         $params = [];
         $params[] = $post["text"];
-        $params[] = $post["img_url"];
+        $params[] = $post["image_url"];
         $params[] = $post["price"];
         $params[] = $post["owner_id"];
         $stmt = $pdo->prepare($sql);
         $stmt->execute($params);
         $post_id = $pdo->lastInsertId();
         $post["id"] = $post_id;
-    }
-    catch (PDOException $e){
-        echo $e->getMessage();
-    }
+//    }
+//    catch (PDOException $e){
+//        echo $e->getMessage();
+//    }
 }
 function postOwnedBy($post_id, $user_id){
     try{

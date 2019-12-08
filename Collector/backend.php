@@ -53,13 +53,13 @@ if(isset($_POST["addPost"])){
             $file_name_parts = explode(".", $_FILES["file"]["name"]);
             $extension = $file_name_parts[count($file_name_parts) - 1];
             $filename = $_SESSION["logged_user_id"] . "-" . time() . "." . $extension;
-            $img_url = "uploads" . DIRECTORY_SEPARATOR . $filename;
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $img_url)) {
+            $image_url = "uploads" . DIRECTORY_SEPARATOR . $filename;
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $image_url)) {
                 $owner_id = $_SESSION["logged_user_id"];
                 $post = [];
                 $post["text"] = $text;
                 $post["price"] = $price;
-                $post["img_url"] = $img_url;
+                $post["image_url"] = $image_url;
                 $post["owner_id"] = $owner_id;
                 addPost($post);
                 header("Location: ../View/main.php");
@@ -86,14 +86,14 @@ if(isset($_POST['editPost'])){
             $file_name_parts = explode(".", $_FILES["file"]["name"]);
             $extension = $file_name_parts[count($file_name_parts) - 1];
             $filename = $_SESSION["logged_user_id"] . "-" . time() . "." . $extension;
-            $img_url = "uploads" . DIRECTORY_SEPARATOR . $filename;
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $img_url)) {
+            $image_url = "uploads" . DIRECTORY_SEPARATOR . $filename;
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $image_url)) {
                 $owner_id = $_SESSION["logged_user_id"];
                 $post = [];
                 $post['id'] = $post_id;
                 $post["text"] = $text;
                 $post["price"] = $price;
-                $post["img_url"] = $img_url;
+                $post["img_url"] = $image_url;
                 $post["owner_id"] = $owner_id;
                 editPost($post);
                 header("Location: ../View/main.php");
